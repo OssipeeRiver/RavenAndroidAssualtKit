@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Raven Android Awareness Kit</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!--left main menu -->
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <!--right main menu -->
+    <string name="menu_test1">Test1</string>
+    <string name="menu_test2">Test2</string>
+    <string name="menu_test3">Test3</string>
+
+
+
+</resources>
