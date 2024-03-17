@@ -7,16 +7,15 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <!--left main menu -->
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <!--left drawer-->
+    <!--TODO correct fragment naming -->
+    <string name="menu_home">Map</string>
+    <string name="menu_gallery">Location Data</string>
+    <string name="menu_slideshow">Forecast Data</string>
 
-    <!--right main menu -->
+    <!--right drawer -->
     <string name="menu_test1">Test1</string>
     <string name="menu_test2">Test2</string>
     <string name="menu_test3">Test3</string>
-
-
-
+    
 </resources>
