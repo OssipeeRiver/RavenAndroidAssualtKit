@@ -1,42 +1,62 @@
 package com.ossipeeriver.ravenandroidawarenesskit.ui.home
 
 import android.os.Bundle
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import com.arcgismaps.ApiKey
+import com.arcgismaps.ArcGISEnvironment
+import com.arcgismaps.ArcGISEnvironment.applicationContext
+import com.arcgismaps.mapping.ArcGISMap
+import com.arcgismaps.mapping.BasemapStyle
+import com.arcgismaps.mapping.Viewpoint
+import com.arcgismaps.mapping.view.MapView
+import com.ossipeeriver.ravenandroidawarenesskit.R
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val mapView = binding.mapView
+
+        lifecycle.addObserver(mapView)
+        setApiKey()
+        setupMap(mapView)
+    }
+
+    private fun setApiKey() {
+        ArcGISEnvironment.apiKey = ApiKey.create("AAPK007ac4272f2246018626a29e68e20e74RLlbyMb7weVEdL9kNRy4D_sz9pdyeUrXeaduxO2EjC1sKPNVJOAO7nSyBUsFofiv")
+    }
+
+    private fun setupMap(mapView: MapView) {
+        val map = ArcGISMap(BasemapStyle.ArcGISTopographic)
+        mapView.map = map
+        mapView.setViewpoint(Viewpoint(34.0270, -118.8050, 72000.0))
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }
