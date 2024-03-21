@@ -14,8 +14,6 @@
     <string name="menu_slideshow">Forecast Data</string>
 
     <!--right drawer -->
-    <string name="menu_test1">Test1</string>
-    <string name="menu_test2">Test2</string>
-    <string name="menu_test3">Test3</string>
+
     
 </resources>
