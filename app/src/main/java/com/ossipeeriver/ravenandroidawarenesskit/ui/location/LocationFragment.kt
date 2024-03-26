@@ -1,17 +1,18 @@
-package com.ossipeeriver.ravenandroidawarenesskit.ui.gallery
+package com.ossipeeriver.ravenandroidawarenesskit.ui.location
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.ossipeeriver.ravenandroidawarenesskit.databinding.FragmentGalleryBinding
+import com.ossipeeriver.ravenandroidawarenesskit.databinding.FragmentLocationBinding
 
-class GalleryFragment : Fragment() {
+class LocationFragment : Fragment() {
 
-    private var _binding: FragmentGalleryBinding? = null
+    private var _binding: FragmentLocationBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +23,14 @@ class GalleryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)
+        val locationViewModel =
+            ViewModelProvider(this).get(LocationViewModel::class.java)
 
-        _binding = FragmentGalleryBinding.inflate(inflater, container, false)
+        _binding = FragmentLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.locationData
+        locationViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
