@@ -29,10 +29,6 @@ class LocationFragment : Fragment() {
         _binding = FragmentLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.locationData
-        locationViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

@@ -34,5 +34,4 @@
         app:headerLayout="@layout/nav_header_main"
         tools:openDrawer="end"/>
 
-
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -13,7 +13,16 @@
     <string name="menu_gallery">Location Data</string>
     <string name="menu_slideshow">Forecast Data</string>
 
-    <!--right drawer -->
+    <!-- location data -->
+    <string name="elevation">ELEVATION</string>
+    <string name="military_grid_reference_system">M.G.R.S</string>
+    <string name="latitude">LATITUDE</string>
+    <string name="longitude">LONGITUDE</string>
 
-    
+    <string name="sample_elevation">± 00.00 ft</string>
+    <string name="sample_mgrs">± 4QFJ12345678</string>
+    <string name="sample_latitude">± 43.652232921152894</string>
+    <string name="sample_longitude">± 70.22391883216633</string>
+
+
 </resources>
