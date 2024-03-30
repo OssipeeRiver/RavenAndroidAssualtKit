@@ -22,4 +22,28 @@
     <style name="Theme.RavenAndroidAwarenessKit.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.RavenAndroidAwarenessKit.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Data card widgets -->
+    <dimen name="card_width">250dp</dimen>
+    <dimen name="card_height">100dp</dimen>
+    <dimen name="card_margin">20dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="card_corner_radius">5dp</dimen>
+
+    <style name="locationDataWidgetHeader">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
+
+    <style name="locationDataWidgetContent">
+        <item name="android:textSize">20dp</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@android:color/darker_gray</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>
