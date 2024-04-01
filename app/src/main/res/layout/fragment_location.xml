@@ -33,13 +33,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/locationDataWidgetHeader"
-                        android:text="@string/military_grid_reference_system"/>
+                        android:text="@string/elevation"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         style="@style/locationDataWidgetContent"
-                        android:text="@string/sample_mgrs"/>
+                        android:text="@string/null_data"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -59,13 +59,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/locationDataWidgetHeader"
-                        android:text="@string/elevation"/>
+                        android:text="@string/military_grid_reference_system"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         style="@style/locationDataWidgetContent"
-                        android:text="@string/sample_elevation"/>
+                        android:text="@string/null_data"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -104,7 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         style="@style/locationDataWidgetContent"
-                        android:text="@string/sample_longitude"/>
+                        android:text="@string/null_data"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -130,7 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         style="@style/locationDataWidgetContent"
-                        android:text="@string/sample_latitude"/>
+                        android:text="@string/null_data"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
