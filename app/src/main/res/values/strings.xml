@@ -19,10 +19,16 @@
     <string name="latitude">LATITUDE</string>
     <string name="longitude">LONGITUDE</string>
 
-    <string name="sample_elevation">± 00.00 ft</string>
-    <string name="sample_mgrs">± 4QFJ12345678</string>
-    <string name="sample_latitude">± 43.652232921152894</string>
-    <string name="sample_longitude">± 70.22391883216633</string>
+    <!-- forecast data -->
+    <string name="temperature">TEMPERATURE</string>
+    <string name="humidity">HUMIDITY</string>
+    <string name="visibility">VISIBILITY</string>
+    <string name="uv_index">UV INDEX</string>
+    <string name="wind">WIND</string>
+    <string name="dew_point">DEW POINT</string>
+
+    <string name="null_data">null data</string>
+
 
 
 </resources>
