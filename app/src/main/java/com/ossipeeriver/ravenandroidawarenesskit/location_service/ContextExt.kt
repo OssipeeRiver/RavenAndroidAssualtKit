@@ -1,4 +1,4 @@
-package com.ossipeeriver.ravenandroidawarenesskit
+package com.ossipeeriver.ravenandroidawarenesskit.location_service
 
 import android.Manifest
 import android.content.Context

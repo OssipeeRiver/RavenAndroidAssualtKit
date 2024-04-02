@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:name=".LocationApp"
+        android:name=".location_service.LocationApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RavenAndroidAwarenessKit">
-        <service android:name=".LocationService" android:foregroundServiceType="location"
+        <service android:name=".location_service.LocationService" android:foregroundServiceType="location"
             tools:ignore="ForegroundServicePermission" />
         <activity
             android:name=".MainActivity"

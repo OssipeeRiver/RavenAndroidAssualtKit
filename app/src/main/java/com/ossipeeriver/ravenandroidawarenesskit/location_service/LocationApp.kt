@@ -1,4 +1,4 @@
-package com.ossipeeriver.ravenandroidawarenesskit
+package com.ossipeeriver.ravenandroidawarenesskit.location_service
 
 import android.app.Application
 import android.app.NotificationChannel
@@ -10,7 +10,7 @@ class LocationApp: Application() {
         super.onCreate()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                "loccation",
+                "location",
                 "Location",
                 NotificationManager.IMPORTANCE_LOW
             )

@@ -1,4 +1,4 @@
-package com.ossipeeriver.ravenandroidawarenesskit
+package com.ossipeeriver.ravenandroidawarenesskit.location_service
 
 import android.location.GnssNavigationMessage
 import android.location.Location

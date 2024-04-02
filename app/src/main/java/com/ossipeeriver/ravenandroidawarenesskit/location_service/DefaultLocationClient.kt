@@ -1,11 +1,10 @@
-package com.ossipeeriver.ravenandroidawarenesskit
+package com.ossipeeriver.ravenandroidawarenesskit.location_service
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
 import android.location.LocationManager
 import android.os.Looper
-import androidx.core.content.getSystemService
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -15,7 +14,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 
-@Suppress("UNREACHABLE_CODE")
 class DefaultLocationClient(
     private val context: Context,
     private val client: FusedLocationProviderClient
