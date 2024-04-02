@@ -50,8 +50,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.7.7'
     implementation 'androidx.cardview:cardview:1.0.0'
     
-    // Map Data
+    // map & location
     implementation 'com.esri:arcgis-maps-kotlin:200.3.0' // TODO esri required
+    implementation 'com.google.android.gms:play-services-location:21.2.0'
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
