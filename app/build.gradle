@@ -9,6 +9,9 @@ android {
     compileSdk 34
 
     defaultConfig {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
         applicationId "com.ossipeeriver.ravenandroidawarenesskit"
         minSdk 34 // TODO changed from 26
         targetSdk 34
@@ -16,6 +19,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "ARC_GIS_API_KEY", "\"${properties.getProperty("ARC_GIS_API_KEY")}\""
     }
 
     buildTypes {
@@ -50,8 +55,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.7.7'
     implementation 'androidx.cardview:cardview:1.0.0'
     
-    // Map Data
+    // map & location
     implementation 'com.esri:arcgis-maps-kotlin:200.3.0' // TODO esri required
+    implementation 'com.google.android.gms:play-services-location:21.2.0'
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
