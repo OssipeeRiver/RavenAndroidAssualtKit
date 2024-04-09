@@ -28,7 +28,9 @@
     <string name="dew_point">DEW POINT</string>
 
     <string name="null_data">null data</string>
-
+    <string name="three_dimensional_map_button">3D Map</string>
+    <string name="dark_map_button">Dark Map</string>
+    <string name="doppler_radar_map_button">Doppler Radar</string>
 
 
 </resources>
