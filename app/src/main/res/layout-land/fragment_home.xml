@@ -19,8 +19,8 @@
             android:id="@+id/map_button_carousel"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_marginEnd="150dp"
+            android:layout_gravity="top|end"
+            android:layout_marginEnd="10dp"
             android:fillViewport="true"
             android:paddingBottom="10dp">
 

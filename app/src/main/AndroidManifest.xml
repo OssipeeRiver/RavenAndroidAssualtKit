@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RavenAndroidAwarenessKit">
-        <service android:name=".location_service.LocationService" android:foregroundServiceType="location"
+        <service
+            android:name=".location_service.LocationNotificationService"
+            android:foregroundServiceType="location"
             tools:ignore="ForegroundServicePermission" />
         <activity
             android:name=".MainActivity"

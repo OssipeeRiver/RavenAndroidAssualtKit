@@ -34,12 +34,12 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setApiKey()
 
         mapView = binding.mapView
         locationDisplay = mapView.locationDisplay
 
         lifecycle.addObserver(mapView)
-        setApiKey()
         setupMap()
     }
 
