@@ -141,6 +141,8 @@
         android:id="@+id/getLocationBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_gravity="bottom|right" />
+        android:layout_gravity="bottom|end"
+        android:foreground="@drawable/ic_sync_location"
+        android:backgroundTint="@color/gray"/>
 
 </LinearLayout>

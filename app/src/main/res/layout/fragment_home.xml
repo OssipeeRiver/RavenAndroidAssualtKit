@@ -35,7 +35,7 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   app:cornerRadius="10dp"
-                  android:text="@string/three_dimensional_map_button" />
+                  android:text="@string/map_layers_button" />
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/mapview_button"
@@ -43,14 +43,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:cornerRadius="10dp"
-                    android:text="@string/dark_map_button" />
+                    android:text="@string/doppler_radar_map_button" />
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/mapview_button"
                     android:id="@+id/weather_map_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/doppler_radar_map_button" />
+                    android:text="@string/more_options_map_button" />
             </LinearLayout>
         </HorizontalScrollView>
     </FrameLayout>

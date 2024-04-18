@@ -77,7 +77,9 @@ class LocationFragment : Fragment(), LocationListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        locationManager.removeUpdates(this) // Make sure to remove updates to prevent leaks
+        if(::locationManager.isInitialized) {
+            locationManager.removeUpdates(this)
+        }
         _binding = null
     }
 
