@@ -29,9 +29,7 @@ class DefaultLocationClient(
             val locationManager =  context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
             val isGpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
             val isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-            if (!isGpsEnabled && !isNetworkEnabled) {
-                throw LocationClient.LocationException("GPS disabled")
-            }
+            if (!isGpsEnabled && !isNetworkEnabled) { throw LocationClient.LocationException("GPS disabled on device") }
 
             val request = LocationRequest.create()
                 .setInterval(interval)

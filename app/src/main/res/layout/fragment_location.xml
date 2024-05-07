@@ -98,13 +98,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/locationDataWidgetHeader"
-                        android:text="@string/longitude"/>
+                        android:text="@string/latitude"/>
 
                     <TextView
+                        android:id="@+id/locationLatWidget"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        style="@style/locationDataWidgetContent"
-                        android:text="@string/null_data"/>
+                        style="@style/locationDataWidgetContent" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -124,17 +124,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/locationDataWidgetHeader"
-                        android:text="@string/latitude"/>
+                        android:text="@string/longitude"/>
 
                     <TextView
+                        android:id="@+id/locationLongWidget"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        style="@style/locationDataWidgetContent"
-                        android:text="@string/null_data"/>
+                        style="@style/locationDataWidgetContent" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/getLocationBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:foreground="@drawable/ic_sync_location"
+        android:backgroundTint="@color/gray"/>
 
 </LinearLayout>

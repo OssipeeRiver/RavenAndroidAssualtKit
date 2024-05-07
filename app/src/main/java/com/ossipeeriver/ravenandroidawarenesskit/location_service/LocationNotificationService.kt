@@ -2,22 +2,24 @@ package com.ossipeeriver.ravenandroidawarenesskit.location_service
 
 import android.app.NotificationManager
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.LocationServices
-import com.ossipeeriver.ravenandroidawarenesskit.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-class LocationService: Service() {
+class LocationNotificationService: Service() {
 
-    private val servicesScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private lateinit var locationClient: LocationClient
+
     override fun onBind(p0: Intent?): IBinder? {
         return null
     }
@@ -42,11 +44,10 @@ class LocationService: Service() {
         val notification = NotificationCompat.Builder(this, "location")
             .setContentTitle("Tracking location...")
             .setContentText("Location: null")
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            // .setSmallIcon(R.drawable.ic_launcher_background)
             .setOngoing(true)
 
-        val notificationManager =
-            getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         locationClient
             .getLocationUpdates(10000L)
@@ -59,18 +60,21 @@ class LocationService: Service() {
                 )
                 notificationManager.notify(1, updatedNotification.build())
             }
+            .launchIn(serviceScope)
 
-        startForeground(1,notification.build())
+        startForeground(1, notification.build())
     }
 
     private fun stop() {
         stopForeground(true)
         stopSelf()
     }
+
     override fun onDestroy() {
         super.onDestroy()
-        servicesScope.cancel()
+        serviceScope.cancel()
     }
+
     companion object {
         const val ACTION_START = "ACTION_START"
         const val ACTION_STOP = "ACTION_STOP"
