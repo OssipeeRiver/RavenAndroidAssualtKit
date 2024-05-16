@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <com.arcgismaps.mapping.view.MapView
-        android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -54,6 +49,11 @@
                     android:text="@string/more_options_map_button" />
             </LinearLayout>
         </HorizontalScrollView>
+
+        <com.arcgismaps.mapping.view.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
