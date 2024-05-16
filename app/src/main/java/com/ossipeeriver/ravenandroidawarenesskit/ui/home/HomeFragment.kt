@@ -13,8 +13,10 @@ import com.arcgismaps.mapping.ArcGISMap
 import com.arcgismaps.mapping.BasemapStyle
 import com.arcgismaps.mapping.view.LocationDisplay
 import com.arcgismaps.mapping.view.MapView
+import com.ossipeeriver.ravenandroidawarenesskit.BuildConfig
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
+import java.util.Properties
 
 class HomeFragment : Fragment() {
 
@@ -43,7 +45,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setApiKey() {
-        ArcGISEnvironment.apiKey = ApiKey.create("AAPK099f686feb6a4e3289a831e647ab6172AUUtTyVSFmH6TbAOU2LJzsaQQnPymytjcF5Kd7vc-IiJI9RkCe4b0NAa9ij1GExJ") // TODO secure this API key
+        ArcGISEnvironment.apiKey = ApiKey.create(BuildConfig.ARC_GIS_API_KEY)
     }
 
     private fun setupMap() {

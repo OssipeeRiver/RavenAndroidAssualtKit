@@ -9,8 +9,6 @@ android {
     compileSdk 34
 
     defaultConfig {
-        Properties properties = new Properties()
-        properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
         applicationId "com.ossipeeriver.ravenandroidawarenesskit"
         minSdk 26 // TODO changed from 26
@@ -19,6 +17,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
         buildConfigField "String", "ARC_GIS_API_KEY", "\"${properties.getProperty("ARC_GIS_API_KEY")}\""
     }
