@@ -19,12 +19,11 @@ class SavedLocationViewModel(
     private val dao: SavedLocationDao
 ): ViewModel() {
 
-    private val _sortType = MutableStateFlow(SortType.LATITUDE)
+    private val _sortType = MutableStateFlow(SortType.LATITUDE_AND_LONGITUDE)
     private val _savedLocation = _sortType
         .flatMapLatest { sortType ->
             when(sortType) {
-                SortType.LATITUDE -> dao.getSavedLocationByLatitude()
-                SortType.LONGITUDE -> dao.getSavedLocationByLongitude()
+                SortType.LATITUDE_AND_LONGITUDE ->dao.getSavedLocationByLatitudeAndLongitude()
                 SortType.DESCRIPTION -> dao.getSavedLocationByDescription()
             }
         }
@@ -46,52 +45,34 @@ class SavedLocationViewModel(
                     dao.deleteLocation(event.savedLocation)
                 }
             }
-            SavedLocationEvent.HideDialog -> {
-                _state.update { it.copy(
-                    isAddingLocation = false
-                ) }
-            }
-            SavedLocationEvent.SaveLocation -> {
-                val latitude = state.value.latitude
-                val longitude = state.value.longitude
+            is SavedLocationEvent.SaveLocation -> {
+                val latitudeAndLongitude = state.value.latitudeAndLongitude
                 val description = state.value.description
 
-                if (latitude.isNaN() || longitude.isNaN() || description.isBlank()) {
+                if (latitudeAndLongitude.isBlank() || description.isBlank()) {
                     return
                 }
                 val savedLocation = SavedLocation(
-                    latitude = latitude,
-                    longitude = longitude,
+                    latitudeAndLongitude = latitudeAndLongitude,
                     description = description
                 )
                 viewModelScope.launch {
                     dao.upsertLocation(savedLocation)
                 }
-                _state.update { it.copy( // TODO possible logic error
+                _state.update { it.copy(
                     isAddingLocation = false,
-                    latitude = 0.0,
-                    longitude = 0.0,
+                    latitudeAndLongitude = "",
                     description = ""
                 ) }
             }
             is SavedLocationEvent.SetDescription -> {
                 _state.update { it.copy(
-                    description = event.Description
+                    description = event.description
                 ) }
             }
-            is SavedLocationEvent.SetLatitude -> {
+            is SavedLocationEvent.SetLatitudeAndLongitude -> {
                 _state.update { it.copy(
-                    latitude = event.latitude
-                ) }
-            }
-            is SavedLocationEvent.SetLongitude -> {
-                _state.update { it.copy(
-                    longitude = event.Longitude
-                ) }
-            }
-            SavedLocationEvent.ShowDialog -> {
-                _state.update { it.copy(
-                    isAddingLocation = true
+                    latitudeAndLongitude = event.latitudeAndLongitude
                 ) }
             }
             is SavedLocationEvent.SortSavedLocations -> {

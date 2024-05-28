@@ -137,12 +137,43 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <Button
-        android:id="@+id/getLocationBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|end"
-        android:foreground="@drawable/ic_sync_location"
-        android:backgroundTint="@color/gray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tasks_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+             />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/save_location_button"
+            style="@style/save_location_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_location_button" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/getLocationBtn"
+            style="@style/save_location_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refresh_location_button" />
+    </LinearLayout>
 </LinearLayout>

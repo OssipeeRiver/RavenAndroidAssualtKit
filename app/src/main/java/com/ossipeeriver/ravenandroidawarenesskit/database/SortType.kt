@@ -1,7 +1,6 @@
 package com.ossipeeriver.ravenandroidawarenesskit
 
 enum class SortType {
-    LATITUDE,
-    LONGITUDE,
+    LATITUDE_AND_LONGITUDE,
     DESCRIPTION
 }

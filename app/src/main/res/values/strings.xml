@@ -18,6 +18,8 @@
     <string name="military_grid_reference_system">M.G.R.S</string>
     <string name="latitude">LATITUDE</string>
     <string name="longitude">LONGITUDE</string>
+    <string name="save_location_button">save location</string>
+    <string name="refresh_location_button">refresh location</string>
 
     <!-- forecast data -->
     <string name="temperature">TEMPERATURE</string>
@@ -31,6 +33,7 @@
     <string name="map_layers_button">Map Layers</string>
     <string name="doppler_radar_map_button">Doppler Radar</string>
     <string name="more_options_map_button">More…</string>
+
 
 
 </resources>

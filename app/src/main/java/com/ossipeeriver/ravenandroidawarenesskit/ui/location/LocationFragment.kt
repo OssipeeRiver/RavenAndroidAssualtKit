@@ -30,21 +30,20 @@ class LocationFragment : Fragment(), LocationListener {
         _binding = FragmentLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.getLocationBtn?.setOnClickListener {
+        binding.getLocationBtn.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
             } else {
                 getLocation()
             }
         }
-
         return root
     }
 
-    private fun getLocation() {
+    private fun getLocation() { // TODO location should only be called on request by user
         try {
             locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100000, 20f, this)
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, this)
         } catch (e: SecurityException) {
             e.printStackTrace()

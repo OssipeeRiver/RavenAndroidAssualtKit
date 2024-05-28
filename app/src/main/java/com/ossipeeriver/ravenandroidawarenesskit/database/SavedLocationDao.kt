@@ -19,10 +19,7 @@ interface SavedLocationDao {
     @Query("SELECT * FROM savedlocation ORDER BY description ASC")
     fun getSavedLocationByDescription(): Flow<List<SavedLocation>>
 
-    @Query("SELECT * FROM savedlocation ORDER BY latitude ASC")
-    fun getSavedLocationByLatitude(): Flow<List<SavedLocation>>
-
-    @Query("SELECT * FROM savedlocation ORDER BY longitude ASC")
-    fun getSavedLocationByLongitude(): Flow<List<SavedLocation>>
+    @Query("SELECT * FROM savedlocation ORDER BY latitudeAndLongitude ASC")
+    fun getSavedLocationByLatitudeAndLongitude(): Flow<List<SavedLocation>>
 
 }
