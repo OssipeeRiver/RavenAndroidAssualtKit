@@ -33,7 +33,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/locationDataWidgetHeader"
-                        android:text="@string/elevation"/>
+                        android:text="@string/military_grid_reference_system"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/locationDataWidgetHeader"
-                        android:text="@string/military_grid_reference_system"/>
+                        android:text="@string/elevation"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -68,7 +68,6 @@
                         android:text="@string/null_data"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -137,43 +136,50 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tasks_list"
+            android:id="@+id/saved_location_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/saved_location_item"
+            android:padding="@dimen/big_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-             />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal|bottom"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/save_location_button"
-            style="@style/save_location_button"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/button_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/save_location_button" />
+            android:gravity="center_horizontal|bottom"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
-        <View
-            android:layout_width="20dp"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/save_location_button"
+                style="@style/save_location_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_location_button" />
 
-        <Button
-            android:id="@+id/getLocationBtn"
-            style="@style/save_location_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/refresh_location_button" />
-    </LinearLayout>
+            <View
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/getLocationBtn"
+                style="@style/save_location_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/refresh_location_button" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

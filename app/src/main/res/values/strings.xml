@@ -34,6 +34,14 @@
     <string name="doppler_radar_map_button">Doppler Radar</string>
     <string name="more_options_map_button">More…</string>
 
+    <!--save new location activity -->
+    <string name="hint_location_description">location description…</string>
+    <string name="button_save">save</string>
+    <string name="empty_not_saved">empty input, location not saved</string>
+    <string name="add_new_location">add new location</string>
+
+
+
 
 
 </resources>

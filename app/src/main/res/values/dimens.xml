@@ -13,4 +13,10 @@
     <dimen name="header_height">192dp</dimen>
     <dimen name="header_padding">16dp</dimen>
     <dimen name="header_image_width">100dp</dimen>
+
+    <!-- saved locations list -->
+    <dimen name="big_padding">16dp</dimen>
+
+    <!--save new location activity -->
+    <dimen name="min_height">48dp</dimen>
 </resources>

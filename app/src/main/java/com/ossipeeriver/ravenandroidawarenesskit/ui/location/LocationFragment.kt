@@ -1,7 +1,9 @@
 package com.ossipeeriver.ravenandroidawarenesskit.ui.location
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -13,6 +15,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ossipeeriver.ravenandroidawarenesskit.R
+import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.FragmentLocationBinding
 
 class LocationFragment : Fragment(), LocationListener {
@@ -22,6 +29,14 @@ class LocationFragment : Fragment(), LocationListener {
 
     private lateinit var locationManager: LocationManager
 
+    private var currentLocation: Location? = null
+
+    private val newSavedLocationRequestCode = 1
+
+    private val locationViewModel: LocationViewModel by viewModels {
+        LocationModelFactory((requireActivity().application as SavedLocationApplication).repository)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,6 +45,21 @@ class LocationFragment : Fragment(), LocationListener {
         _binding = FragmentLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // saved location recycler view
+        val recyclerView = binding.savedLocationRecyclerview
+        val adapter = SavedLocationListAdapter()
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        locationViewModel.allSavedLocations.observe(owner = viewLifecycleOwner) {savedLocation ->
+            savedLocation.let { adapter.submitList(it) }
+        }
+
+        binding.saveLocationButton.setOnClickListener {
+            val intent = Intent(requireContext(), AddNewLocationActivity::class.java)
+            startActivityForResult(intent, newSavedLocationRequestCode)
+        }
+
         binding.getLocationBtn.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
@@ -37,6 +67,7 @@ class LocationFragment : Fragment(), LocationListener {
                 getLocation()
             }
         }
+
         return root
     }
 
@@ -85,4 +116,28 @@ class LocationFragment : Fragment(), LocationListener {
     companion object {
         private const val REQUEST_LOCATION_PERMISSION = 1
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intentData)
+
+        if (requestCode == newSavedLocationRequestCode && resultCode == Activity.RESULT_OK) {
+            intentData?.getStringExtra(AddNewLocationActivity.EXTRA_REPLY)?.let { reply ->
+                currentLocation?.let { location ->
+                    val latLong = "${location.latitude},${location.longitude}"
+                    val savedLocation = SavedLocation(
+                        latitudeAndLongitude = latLong,
+                        description = reply
+                    )
+                    locationViewModel.insert(savedLocation)
+                }
+            }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                R.string.empty_not_saved,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
 }
+

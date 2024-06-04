@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityMainBinding
+import com.ossipeeriver.ravenandroidawarenesskit.ui.location.SavedLocationListAdapter
 
 
 class MainActivity : AppCompatActivity() {

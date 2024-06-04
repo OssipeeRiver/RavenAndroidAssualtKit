@@ -15,13 +15,25 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/saved_location_text"
-            android:layout_width="match_parent"
+            android:id="@+id/saved_location_digits"
+            style="@style/saved_location_title"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        <TextView
+            android:id="@+id/saved_location_description"
+            style="@style/saved_location_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
 
         <ImageButton
             android:layout_width="wrap_content"

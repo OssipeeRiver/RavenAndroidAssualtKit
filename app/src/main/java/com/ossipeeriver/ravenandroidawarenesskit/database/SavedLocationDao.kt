@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
+import androidx.room.Update
 import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 
@@ -16,10 +17,16 @@ interface SavedLocationDao {
     @Delete
     suspend fun deleteLocation(savedLocation: SavedLocation)
 
-    @Query("SELECT * FROM savedlocation ORDER BY description ASC")
+    @Update
+    suspend fun updateSavedLocation(savedLocation: SavedLocation)
+
+    @Query("SELECT * FROM saved_locations ORDER BY description ASC")
     fun getSavedLocationByDescription(): Flow<List<SavedLocation>>
 
-    @Query("SELECT * FROM savedlocation ORDER BY latitudeAndLongitude ASC")
+    @Query("SELECT * FROM saved_locations ORDER BY latitudeAndLongitude ASC")
     fun getSavedLocationByLatitudeAndLongitude(): Flow<List<SavedLocation>>
+
+    @Query("DELETE FROM saved_locations")
+    suspend fun deleteAll()
 
 }

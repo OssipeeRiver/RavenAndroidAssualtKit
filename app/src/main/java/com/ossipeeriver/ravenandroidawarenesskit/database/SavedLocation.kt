@@ -1,8 +1,10 @@
 package com.ossipeeriver.ravenandroidawarenesskit.database
 
+import androidx.annotation.NonNull
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-@Entity
+@Entity(tableName = "saved_locations")
 data class SavedLocation(
     val latitudeAndLongitude: String,
     val description: String,
