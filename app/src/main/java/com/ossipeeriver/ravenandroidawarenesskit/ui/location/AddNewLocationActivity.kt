@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -12,17 +13,19 @@ import com.ossipeeriver.ravenandroidawarenesskit.R
 class AddNewLocationActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.add_new_location_activity)
-        val editWordView = findViewById<EditText>(R.id.edit_description)
+        val editSavedLocationDescription = findViewById<EditText>(R.id.edit_description)
 
-        val button = findViewById<Button>(R.id.button_save)
-        button.setOnClickListener {
+        val saveButton = findViewById<Button>(R.id.button_save)
+        saveButton.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(editWordView.text)) {
+            if (TextUtils.isEmpty(editSavedLocationDescription.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
-                val word = editWordView.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, word)
+                val description = editSavedLocationDescription.text.toString()
+                Log.d("AddNewLocationActivity", "Setting result with description: $description")
+                replyIntent.putExtra(EXTRA_REPLY, description)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()

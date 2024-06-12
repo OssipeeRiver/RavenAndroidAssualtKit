@@ -19,14 +19,16 @@ class SavedLocationListAdapter : ListAdapter<SavedLocation, SavedLocationViewHol
 
     override fun onBindViewHolder(holder: SavedLocationViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.latitudeAndLongitude)
+        holder.bind(current)
     }
 
     class SavedLocationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val savedLocationItemView: TextView = itemView.findViewById(R.id.saved_location_digits)
+        private val savedLocationDigits: TextView = itemView.findViewById(R.id.saved_location_digits)
+        private val savedLocationDescription: TextView = itemView.findViewById(R.id.saved_location_description)
 
-        fun bind(text: String?) {
-            savedLocationItemView.text = text
+        fun bind(savedLocation: SavedLocation) {
+            savedLocationDigits.text = savedLocation.latitudeAndLongitude
+            savedLocationDescription.text = savedLocation.description
         }
 
         companion object {
@@ -45,7 +47,7 @@ class SavedLocationListAdapter : ListAdapter<SavedLocation, SavedLocationViewHol
             }
 
             override fun areContentsTheSame(oldItem: SavedLocation, newItem: SavedLocation): Boolean {
-                return oldItem.latitudeAndLongitude == newItem.latitudeAndLongitude
+                return oldItem.latitudeAndLongitude == newItem.latitudeAndLongitude && oldItem.description == newItem.description
             }
         }
     }

@@ -9,34 +9,46 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ossipeeriver.ravenandroidawarenesskit.R
 import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
+import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationRoomDatabase
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.FragmentLocationBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 
+@Suppress("DEPRECATION")
 class LocationFragment : Fragment(), LocationListener {
 
     private var _binding: FragmentLocationBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var locationManager: LocationManager
-
+    private lateinit var locationViewModel: LocationViewModel
     private var currentLocation: Location? = null
 
     private val newSavedLocationRequestCode = 1
 
-    private val locationViewModel: LocationViewModel by viewModels {
-        LocationModelFactory((requireActivity().application as SavedLocationApplication).repository)
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLocation()
+            } else {
+                onProviderDisabled()
+            }
+        }
     }
-
+    companion object { private const val REQUEST_LOCATION_PERMISSION = 1 }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,17 +57,29 @@ class LocationFragment : Fragment(), LocationListener {
         _binding = FragmentLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // saved location recycler view
+        val applicationScope = CoroutineScope(SupervisorJob())
+
+        // Initialize the LocationRepository and LocationViewModel
+        val context = requireContext()
+        val database = SavedLocationRoomDatabase.getDatabase(context, applicationScope)
+        val repository = LocationRepository(database.savedLocationDao())
+        val viewModelFactory = LocationModelFactory(repository)
+        locationViewModel = ViewModelProvider(this, viewModelFactory).get(LocationViewModel::class.java)
+        
+        // recycler view
         val recyclerView = binding.savedLocationRecyclerview
         val adapter = SavedLocationListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        // observe ViewModel
         locationViewModel.allSavedLocations.observe(owner = viewLifecycleOwner) {savedLocation ->
             savedLocation.let { adapter.submitList(it) }
+            Log.d("LOCATION FRAGMENT", "running: locationViewModel.allSavedLocations.observe")
         }
 
         binding.saveLocationButton.setOnClickListener {
+            Log.d("Save Location BTN", "Pressed save location button")
             val intent = Intent(requireContext(), AddNewLocationActivity::class.java)
             startActivityForResult(intent, newSavedLocationRequestCode)
         }
@@ -94,41 +118,24 @@ class LocationFragment : Fragment(), LocationListener {
         // Required override
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_LOCATION_PERMISSION) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getLocation()
-            } else {
-                onProviderDisabled()
-            }
-        }
-    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        if(::locationManager.isInitialized) {
-            locationManager.removeUpdates(this)
-        }
-        _binding = null
-    }
-
-    companion object {
-        private const val REQUEST_LOCATION_PERMISSION = 1
-    }
-
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
+
+        Log.d("LocationFragment", "onActivityResult called with requestCode: $requestCode and resultCode: $resultCode")
 
         if (requestCode == newSavedLocationRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringExtra(AddNewLocationActivity.EXTRA_REPLY)?.let { reply ->
                 currentLocation?.let { location ->
-                    val latLong = "${location.latitude},${location.longitude}"
+                    val latLong = ("${location.latitude}, ${location.longitude}").toString()
                     val savedLocation = SavedLocation(
                         latitudeAndLongitude = latLong,
                         description = reply
                     )
                     locationViewModel.insert(savedLocation)
+                } ?: run {
+                    Log.d("LocationFragment", "Current location is null")
                 }
             }
         } else {
@@ -138,6 +145,14 @@ class LocationFragment : Fragment(), LocationListener {
                 Toast.LENGTH_LONG
             ).show()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if(::locationManager.isInitialized) {
+            locationManager.removeUpdates(this)
+        }
+        _binding = null
     }
 }
 

@@ -1,5 +1,6 @@
 package com.ossipeeriver.ravenandroidawarenesskit.ui.location
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +16,7 @@ class LocationViewModel(private val repository: LocationRepository) : ViewModel(
 
     fun insert(location: SavedLocation) = viewModelScope.launch {
         repository.insert(location)
+        Log.d("LOCATION REPOSITORY", "upserting location to database")
     }
 }
 

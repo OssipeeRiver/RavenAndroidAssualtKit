@@ -1,6 +1,7 @@
 package com.ossipeeriver.ravenandroidawarenesskit.database
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -18,10 +19,7 @@ abstract class SavedLocationRoomDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: SavedLocationRoomDatabase? = null
 
-        fun getDatabase(
-            context: Context,
-            scope: CoroutineScope
-        ): SavedLocationRoomDatabase {
+        fun getDatabase( context: Context, scope: CoroutineScope): SavedLocationRoomDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
@@ -39,7 +37,7 @@ abstract class SavedLocationRoomDatabase: RoomDatabase() {
 
         private class SavedLocationDatabaseCallback(
             private val scope: CoroutineScope
-        ) : RoomDatabase.Callback() {
+        ) : Callback() {
             /**
              * Override the onCreate method to populate the database.
              */
@@ -57,8 +55,30 @@ abstract class SavedLocationRoomDatabase: RoomDatabase() {
 
         suspend fun populateDatabase(savedLocationDao: SavedLocationDao) {
             // populate database with sample data
-            var sampleLocation = SavedLocation("123456 123456", "A sample location")
+            var sampleLocation = SavedLocation(
+                "40.0220, -100.0100",
+                "Charlie ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            )
             savedLocationDao.upsertLocation(sampleLocation)
+
+            sampleLocation = SavedLocation(
+                "50.0220, -70.0100",
+                "Alpha ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            )
+            savedLocationDao.upsertLocation(sampleLocation)
+
+            sampleLocation = SavedLocation(
+                "40.4220, -75.0400",
+                "Delta ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            )
+            savedLocationDao.upsertLocation(sampleLocation)
+
+            sampleLocation = SavedLocation(
+                "35.0220, -70.0100",
+                "Bravo ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            )
+            savedLocationDao.upsertLocation(sampleLocation)
+            Log.d("LOCATION DB", "ADDED EXAMPLE DATA")
         }
     }
 }
