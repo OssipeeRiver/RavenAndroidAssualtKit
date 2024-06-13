@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ossipeeriver.ravenandroidawarenesskit.R
 import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
+import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationEvent
 import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationRoomDatabase
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityLocationBinding
 import kotlinx.coroutines.CoroutineScope
@@ -31,6 +32,9 @@ class LocationActivity : AppCompatActivity(), LocationListener {
     private lateinit var locationManager: LocationManager
     private var currentLocation: Location? = null
     private val newSavedLocationRequestCode = 1
+
+    data class GridCoordinates(var latitude: Double = 0.0, var longitude: Double = 0.0)
+    var currentCoordinates = GridCoordinates()
 
     private val locationViewModel: LocationViewModel by viewModels {
         LocationModelFactory((application as SavedLocationApplication).repository)
@@ -99,6 +103,9 @@ class LocationActivity : AppCompatActivity(), LocationListener {
     override fun onLocationChanged(location: Location) {
         binding.locationLatWidget.text = "${location.latitude}"
         binding.locationLongWidget.text = "${location.longitude}"
+
+        currentCoordinates.latitude = location.latitude
+        currentCoordinates.longitude = location.longitude
     }
 
     private fun onProviderDisabled() {
@@ -117,8 +124,15 @@ class LocationActivity : AppCompatActivity(), LocationListener {
         Log.d("LOCATION ACTIVITY", "onActivityResult called with requestCode: $requestCode and resultCode: $resultCode")
 
         if (requestCode == newSavedLocationRequestCode && resultCode == Activity.RESULT_OK) {
-            data?.getStringExtra(AddNewLocationActivity.EXTRA_REPLY)?.let {
-                val savedLocation = SavedLocation(it)
+            data?.getStringExtra(AddNewLocationActivity.EXTRA_REPLY)?.let { description ->
+                val latitude = data.getDoubleExtra(AddNewLocationActivity.EXTRA_LATITUDE, 0.0)
+                val longitude = data.getDoubleExtra(AddNewLocationActivity.EXTRA_LONGITUDE, 0.0)
+
+                val latLongToSave = "$latitude, $longitude"
+                val savedLocation = SavedLocation(
+                    latitudeAndLongitude = latLongToSave,
+                    description = description
+                )
                 locationViewModel.insert(savedLocation)
             }
         } else {
