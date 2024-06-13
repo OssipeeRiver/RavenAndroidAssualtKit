@@ -24,8 +24,8 @@ interface SavedLocationDao {
     @Query("SELECT * FROM saved_locations ORDER BY description ASC")
     fun getSavedLocationByDescription(): Flow<List<SavedLocation>>
 
-//    @Query("SELECT * FROM saved_locations ORDER BY latitudeAndLongitude ASC")
-//    fun getSavedLocationByLatitudeAndLongitude(): Flow<List<SavedLocation>>
+    @Query("SELECT * FROM saved_locations ORDER BY latitudeAndLongitude ASC")
+    fun getSavedLocationByLatitudeAndLongitude(): Flow<List<SavedLocation>>
 
     @Query("DELETE FROM saved_locations")
     suspend fun deleteAll()

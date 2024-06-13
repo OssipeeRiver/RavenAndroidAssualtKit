@@ -33,9 +33,6 @@ class LocationActivity : AppCompatActivity(), LocationListener {
     private var currentLocation: Location? = null
     private val newSavedLocationRequestCode = 1
 
-//    data class GridCoordinates(var latitude: Double = 0.0, var longitude: Double = 0.0) TODO
-//    var currentCoordinates = GridCoordinates()
-
     private val locationViewModel: LocationViewModel by viewModels {
         LocationModelFactory((application as SavedLocationApplication).repository)
     }

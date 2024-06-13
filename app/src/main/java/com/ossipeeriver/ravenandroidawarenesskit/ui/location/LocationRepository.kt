@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 class LocationRepository(private val locationDao: SavedLocationDao) {
     // Room executes all queries on a separate thread
     // Observed Flow will notify the observer when the data has changed
-    val allLocations: Flow<List<SavedLocation>> = locationDao.getSavedLocationByDescription()
+    val allLocations: Flow<List<SavedLocation>> = locationDao.getSavedLocationByLatitudeAndLongitude()
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(location: SavedLocation) {

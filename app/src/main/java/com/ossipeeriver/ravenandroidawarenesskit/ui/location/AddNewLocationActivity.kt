@@ -13,7 +13,6 @@ import com.ossipeeriver.ravenandroidawarenesskit.ui.location.LocationActivity.*
 import kotlinx.coroutines.currentCoroutineContext
 
 class AddNewLocationActivity : AppCompatActivity() {
-    // private var currentCoordinates : GridCoordinates = GridCoordinates() TODO: Remove me
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -29,8 +28,6 @@ class AddNewLocationActivity : AppCompatActivity() {
                 val description = editSavedLocationDescription.text.toString()
                 Log.d("AddNewLocationActivity", "Setting result with description: $description")
                 replyIntent.putExtra(EXTRA_REPLY, description)
-//                replyIntent.putExtra(EXTRA_LATITUDE, currentCoordinates.latitude) TODO: Remove me
-//                replyIntent.putExtra(EXTRA_LONGITUDE, currentCoordinates.longitude) TODO: Remove me
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()
@@ -39,7 +36,5 @@ class AddNewLocationActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_REPLY = "com.ossipeeriver.RavenAndroidAwarenessKit.locationlistsql.REPLY"
-        const val EXTRA_LATITUDE = "com.ossipeeriver.RavenAndroidAwarenessKit.locationlistsql.LATITUDE"
-        const val EXTRA_LONGITUDE = "com.ossipeeriver.RavenAndroidAwarenessKit.locationlistsql.LONGITUDE"
     }
 }

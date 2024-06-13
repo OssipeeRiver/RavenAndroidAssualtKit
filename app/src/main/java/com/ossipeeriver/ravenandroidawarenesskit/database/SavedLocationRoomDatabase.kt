@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-@Database(entities = [SavedLocation::class], version = 1)
+@Database(entities = [SavedLocation::class], version = 2)
 abstract class SavedLocationRoomDatabase: RoomDatabase() {
     abstract fun savedLocationDao(): SavedLocationDao
 
@@ -57,19 +57,27 @@ abstract class SavedLocationRoomDatabase: RoomDatabase() {
             // populate database with sample data
             val sampleLocationOne = SavedLocation(
                 "40.0220, -100.0100",
-                "Charlie ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                "Charlie Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio " +
+                        "vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Curabitur sollicitudin " +
+                        "tincidunt metus, at interdum lorem vehicula sit amet. Maecenas tempor dolor quis eros auctor," +
+                        " id pretium lacus aliquet. Sed quis orci sed lacus viverra commodo. Praesent dapibus sapien in " +
+                        "odio faucibus, nec viverra magna vestibulum. Donec quis nulla nec lectus efficitur dignissim." +
+                        " Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas." +
+                        " In bibendum dui in metus pretium, et fermentum justo efficitur. Phasellus id massa sit amet turpis pharetra consequat.."
             )
             savedLocationDao.insertLocation(sampleLocationOne)
+
             val sampleLocationTwo = SavedLocation(
                 "40.0220, -100.0100",
                 "Alpha ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             )
             savedLocationDao.insertLocation(sampleLocationTwo)
-            val sampleLocation = SavedLocation(
+
+            val sampleLocationThree = SavedLocation(
                 "40.0220, -100.0100",
                 "Bravo ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             )
-            savedLocationDao.insertLocation(sampleLocation)
+            savedLocationDao.insertLocation(sampleLocationThree)
         }
     }
 }
