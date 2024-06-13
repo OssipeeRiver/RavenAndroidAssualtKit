@@ -112,11 +112,6 @@ class LocationActivity : AppCompatActivity(), LocationListener {
         Toast.makeText(this, "Please enable phone's location services for this function", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-        // Required override
-    }
-
-
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -128,12 +123,16 @@ class LocationActivity : AppCompatActivity(), LocationListener {
                 val latitude = data.getDoubleExtra(AddNewLocationActivity.EXTRA_LATITUDE, 0.0)
                 val longitude = data.getDoubleExtra(AddNewLocationActivity.EXTRA_LONGITUDE, 0.0)
 
-                val latLongToSave = "$latitude, $longitude"
-                val savedLocation = SavedLocation(
-                    latitudeAndLongitude = latLongToSave,
-                    description = description
-                )
-                locationViewModel.insert(savedLocation)
+                if (latitude != 0.0 && longitude != 0.0) {
+                    val gridToSave = "$latitude,$longitude"
+                    val savedLocation = SavedLocation(
+                        latitudeAndLongitude = gridToSave,
+                        description = description
+                    )
+                    locationViewModel.insert(savedLocation)
+                } else {
+                    Toast.makeText(this, "Coordinates are not available", Toast.LENGTH_LONG).show()
+                }
             }
         } else {
             Toast.makeText(this,

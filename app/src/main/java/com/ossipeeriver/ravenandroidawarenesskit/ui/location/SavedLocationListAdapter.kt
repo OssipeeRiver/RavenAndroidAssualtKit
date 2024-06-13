@@ -27,7 +27,7 @@ class SavedLocationListAdapter : ListAdapter<SavedLocation, SavedLocationViewHol
         private val savedLocationDescription: TextView = itemView.findViewById(R.id.saved_location_description)
 
         fun bind(savedLocation: SavedLocation) {
-            //savedLocationDigits.text = savedLocation.latitudeAndLongitude
+            savedLocationDigits.text = savedLocation.latitudeAndLongitude
             savedLocationDescription.text = savedLocation.description
         }
 
