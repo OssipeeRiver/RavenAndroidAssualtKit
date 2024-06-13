@@ -17,7 +17,7 @@ class AddNewLocationActivity : AppCompatActivity() {
         setContentView(R.layout.add_new_location_activity)
         val editSavedLocationDescription = findViewById<EditText>(R.id.edit_description)
 
-        val saveButton = findViewById<Button>(R.id.button_save)
+        val saveButton = findViewById<Button>(R.id.button_save_this_location)
         saveButton.setOnClickListener {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(editSavedLocationDescription.text)) {
@@ -35,5 +35,4 @@ class AddNewLocationActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_REPLY = "com.ossipeeriver.RavenAndroidAwarenessKit.locationlistsql.REPLY"
     }
-
 }

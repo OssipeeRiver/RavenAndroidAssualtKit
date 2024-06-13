@@ -1,7 +1,9 @@
 package com.ossipeeriver.ravenandroidawarenesskit
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
@@ -10,10 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityMainBinding
+import com.ossipeeriver.ravenandroidawarenesskit.ui.location.LocationActivity
 import com.ossipeeriver.ravenandroidawarenesskit.ui.location.SavedLocationListAdapter
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -38,6 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
         navViewRight.setupWithNavController(navController)
+
+        navView.setNavigationItemSelectedListener(this)
+        navViewRight.setNavigationItemSelectedListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -46,8 +52,19 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return super.onSupportNavigateUp()
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_home -> {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.nav_home)
+            }
+            R.id.nav_slideshow -> {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.nav_slideshow)
+            }
+            R.id.nav_location -> {
+                val intent = Intent(this, LocationActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return true
     }
 }

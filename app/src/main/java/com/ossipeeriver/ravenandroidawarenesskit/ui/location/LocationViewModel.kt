@@ -16,7 +16,7 @@ class LocationViewModel(private val repository: LocationRepository) : ViewModel(
 
     fun insert(location: SavedLocation) = viewModelScope.launch {
         repository.insert(location)
-        Log.d("LOCATION REPOSITORY", "upserting location to database")
+        Log.d("LOCATION REPOSITORY", "Inserting location to database")
     }
 }
 

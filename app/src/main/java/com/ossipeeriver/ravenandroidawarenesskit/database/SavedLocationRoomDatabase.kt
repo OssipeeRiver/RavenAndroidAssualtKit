@@ -56,28 +56,28 @@ abstract class SavedLocationRoomDatabase: RoomDatabase() {
         suspend fun populateDatabase(savedLocationDao: SavedLocationDao) {
             // populate database with sample data
             var sampleLocation = SavedLocation(
-                "40.0220, -100.0100",
+//                "40.0220, -100.0100",
                 "Charlie ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             )
-            savedLocationDao.upsertLocation(sampleLocation)
+            savedLocationDao.insertLocation(sampleLocation)
 
             sampleLocation = SavedLocation(
-                "50.0220, -70.0100",
+//                "50.0220, -70.0100",
                 "Alpha ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             )
-            savedLocationDao.upsertLocation(sampleLocation)
+            savedLocationDao.insertLocation(sampleLocation)
 
             sampleLocation = SavedLocation(
-                "40.4220, -75.0400",
+//                "40.4220, -75.0400",
                 "Delta ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             )
-            savedLocationDao.upsertLocation(sampleLocation)
+            savedLocationDao.insertLocation(sampleLocation)
 
             sampleLocation = SavedLocation(
-                "35.0220, -70.0100",
+//                "35.0220, -70.0100",
                 "Bravo ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             )
-            savedLocationDao.upsertLocation(sampleLocation)
+            savedLocationDao.insertLocation(sampleLocation)
             Log.d("LOCATION DB", "ADDED EXAMPLE DATA")
         }
     }
