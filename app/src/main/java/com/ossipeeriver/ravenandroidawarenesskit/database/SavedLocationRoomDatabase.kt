@@ -55,9 +55,19 @@ abstract class SavedLocationRoomDatabase: RoomDatabase() {
 
         suspend fun populateDatabase(savedLocationDao: SavedLocationDao) {
             // populate database with sample data
-            var sampleLocation = SavedLocation(
+            val sampleLocationOne = SavedLocation(
                 "40.0220, -100.0100",
                 "Charlie ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            )
+            savedLocationDao.insertLocation(sampleLocationOne)
+            val sampleLocationTwo = SavedLocation(
+                "40.0220, -100.0100",
+                "Alpha ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            )
+            savedLocationDao.insertLocation(sampleLocationTwo)
+            val sampleLocation = SavedLocation(
+                "40.0220, -100.0100",
+                "Bravo ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             )
             savedLocationDao.insertLocation(sampleLocation)
         }

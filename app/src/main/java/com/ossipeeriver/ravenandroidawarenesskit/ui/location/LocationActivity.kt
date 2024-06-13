@@ -33,8 +33,8 @@ class LocationActivity : AppCompatActivity(), LocationListener {
     private var currentLocation: Location? = null
     private val newSavedLocationRequestCode = 1
 
-    data class GridCoordinates(var latitude: Double = 0.0, var longitude: Double = 0.0)
-    var currentCoordinates = GridCoordinates()
+//    data class GridCoordinates(var latitude: Double = 0.0, var longitude: Double = 0.0) TODO
+//    var currentCoordinates = GridCoordinates()
 
     private val locationViewModel: LocationViewModel by viewModels {
         LocationModelFactory((application as SavedLocationApplication).repository)
@@ -104,8 +104,7 @@ class LocationActivity : AppCompatActivity(), LocationListener {
         binding.locationLatWidget.text = "${location.latitude}"
         binding.locationLongWidget.text = "${location.longitude}"
 
-        currentCoordinates.latitude = location.latitude
-        currentCoordinates.longitude = location.longitude
+        currentLocation = location
     }
 
     private fun onProviderDisabled() {
@@ -120,11 +119,12 @@ class LocationActivity : AppCompatActivity(), LocationListener {
 
         if (requestCode == newSavedLocationRequestCode && resultCode == Activity.RESULT_OK) {
             data?.getStringExtra(AddNewLocationActivity.EXTRA_REPLY)?.let { description ->
-                val latitude = data.getDoubleExtra(AddNewLocationActivity.EXTRA_LATITUDE, 0.0)
-                val longitude = data.getDoubleExtra(AddNewLocationActivity.EXTRA_LONGITUDE, 0.0)
+                val latitude = currentLocation?.latitude
+                val longitude = currentLocation?.longitude
 
                 if (latitude != 0.0 && longitude != 0.0) {
-                    val gridToSave = "$latitude,$longitude"
+                    //val gridToSave = ("${location.latitude}, ${location.longitude}").toString()
+                    val gridToSave = "$latitude, $longitude"
                     val savedLocation = SavedLocation(
                         latitudeAndLongitude = gridToSave,
                         description = description
