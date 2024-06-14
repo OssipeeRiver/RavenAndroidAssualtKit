@@ -16,6 +16,7 @@ import com.arcgismaps.mapping.view.MapView
 import com.ossipeeriver.ravenandroidawarenesskit.BuildConfig
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
+import java.util.Properties
 
 class HomeFragment : Fragment() {
 
