@@ -15,11 +15,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ossipeeriver.ravenandroidawarenesskit.R
 import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationEvent
 import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationRoomDatabase
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityLocationBinding
 import kotlinx.coroutines.CoroutineScope
@@ -119,17 +117,12 @@ class LocationActivity : AppCompatActivity(), LocationListener {
                 val latitude = currentLocation?.latitude
                 val longitude = currentLocation?.longitude
 
-                if (latitude != 0.0 && longitude != 0.0) {
-                    //val gridToSave = ("${location.latitude}, ${location.longitude}").toString()
-                    val gridToSave = "$latitude, $longitude"
-                    val savedLocation = SavedLocation(
-                        latitudeAndLongitude = gridToSave,
-                        description = description
-                    )
-                    locationViewModel.insert(savedLocation)
-                } else {
-                    Toast.makeText(this, "Coordinates are not available", Toast.LENGTH_LONG).show()
-                }
+                val gridToSave = "$latitude, $longitude"
+                val savedLocation = SavedLocation(
+                    latitudeAndLongitude = gridToSave,
+                    description = description
+                )
+                locationViewModel.insert(savedLocation)
             }
         } else {
             Toast.makeText(this,

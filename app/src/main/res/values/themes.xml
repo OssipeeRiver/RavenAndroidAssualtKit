@@ -26,8 +26,8 @@
     <!-- Data card widgets -->
     <dimen name="card_width">250sp</dimen>
     <dimen name="card_height">100sp</dimen>
-    <dimen name="card_margin">20sp</dimen>
-    <dimen name="card_elevation">5sp</dimen>
+    <dimen name="card_margin">5sp</dimen>
+    <dimen name="card_elevation">10sp</dimen>
     <dimen name="card_corner_radius">5sp</dimen>
 
     <style name="locationDataWidgetHeader">
