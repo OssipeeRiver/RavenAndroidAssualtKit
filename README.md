@@ -7,5 +7,5 @@ enhance in-field communication and decision-making. This project explores concep
 - Gradle, build-logic & version catalogs
 - Reactive programming with coroutines & Flows
 - Jetpack Compose & XML
-- Remote APIs & local databases
+- Remote APIs & local Room databases
 - Location tracking with the Esri ArcGIS Maps SDK
