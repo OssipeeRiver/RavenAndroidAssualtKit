@@ -121,7 +121,7 @@ class LocationActivity : AppCompatActivity(), LocationListener {
                 val latitude = currentLocation?.latitude
                 val longitude = currentLocation?.longitude
 
-                val gridToSave = "$latitude, $longitude"
+                val gridToSave = "$latitude , $longitude"
                 val savedLocation = SavedLocation(
                     latitudeAndLongitude = gridToSave,
                     description = description
