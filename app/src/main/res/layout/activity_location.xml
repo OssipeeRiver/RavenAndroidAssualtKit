@@ -126,7 +126,7 @@
 
 <!-- Search Guide: https://johncodeos.com/how-to-add-search-in-recyclerview-using-kotlin/ -->
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/savedLocationSearchView"
+        android:id="@+id/saved_location_search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="end"

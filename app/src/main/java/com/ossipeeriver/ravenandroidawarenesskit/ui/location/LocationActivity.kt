@@ -10,6 +10,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,10 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ossipeeriver.ravenandroidawarenesskit.R
 import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationRoomDatabase
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityLocationBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
 
 @Suppress("DEPRECATION")
 class LocationActivity : AppCompatActivity(), LocationListener {
@@ -51,12 +49,7 @@ class LocationActivity : AppCompatActivity(), LocationListener {
         binding = ActivityLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val applicationScope = CoroutineScope(SupervisorJob())
-
-        // Initialize the LocationRepository and LocationViewModel
-        val database = SavedLocationRoomDatabase.getDatabase(applicationContext, applicationScope)
-        val repository = LocationRepository(database.savedLocationDao())
-        val viewModelFactory = LocationModelFactory(repository)
+        val savedLocationSearchView = findViewById<SearchView>(R.id.saved_location_search_view)
 
         // recycler view
         val recyclerView = binding.savedLocationRecyclerview
@@ -83,6 +76,17 @@ class LocationActivity : AppCompatActivity(), LocationListener {
                 getLocation()
             }
         }
+
+        savedLocationSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
     }
 
     private fun getLocation() { // TODO location should only be called on request by user
