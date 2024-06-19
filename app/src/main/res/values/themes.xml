@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.RavenAndroidAwarenessKit.NoActionBar">
+    <style name="Theme.RavenAndroidAwarenessKit.NoActionBar"  parent="Theme.RavenAndroidAwarenessKit">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -26,8 +26,8 @@
     <!-- Data card widgets -->
     <dimen name="card_width">250sp</dimen>
     <dimen name="card_height">100sp</dimen>
-    <dimen name="card_margin">20sp</dimen>
-    <dimen name="card_elevation">5sp</dimen>
+    <dimen name="card_margin">5sp</dimen>
+    <dimen name="card_elevation">10sp</dimen>
     <dimen name="card_corner_radius">5sp</dimen>
 
     <style name="locationDataWidgetHeader">
@@ -74,8 +74,6 @@
     </style>
 
     <style name="saved_location_title">
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:paddingLeft">8dp</item>
         <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
     </style>
 

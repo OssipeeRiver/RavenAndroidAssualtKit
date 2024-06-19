@@ -125,6 +125,17 @@
 
     </HorizontalScrollView>
 
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/saved_location_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="1dp"
+        android:iconifiedByDefault="false"
+        android:outlineAmbientShadowColor="@color/white"
+        android:queryHint="@string/search" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

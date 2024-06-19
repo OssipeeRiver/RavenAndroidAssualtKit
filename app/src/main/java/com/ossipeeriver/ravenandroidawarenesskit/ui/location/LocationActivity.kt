@@ -10,20 +10,16 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ossipeeriver.ravenandroidawarenesskit.R
 import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationEvent
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationRoomDatabase
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityLocationBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
 
 @Suppress("DEPRECATION")
 class LocationActivity : AppCompatActivity(), LocationListener {
@@ -53,12 +49,7 @@ class LocationActivity : AppCompatActivity(), LocationListener {
         binding = ActivityLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val applicationScope = CoroutineScope(SupervisorJob())
-
-        // Initialize the LocationRepository and LocationViewModel
-        val database = SavedLocationRoomDatabase.getDatabase(applicationContext, applicationScope)
-        val repository = LocationRepository(database.savedLocationDao())
-        val viewModelFactory = LocationModelFactory(repository)
+        val savedLocationSearchView = findViewById<SearchView>(R.id.saved_location_search_view)
 
         // recycler view
         val recyclerView = binding.savedLocationRecyclerview
@@ -85,6 +76,17 @@ class LocationActivity : AppCompatActivity(), LocationListener {
                 getLocation()
             }
         }
+
+        savedLocationSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
     }
 
     private fun getLocation() { // TODO location should only be called on request by user
@@ -119,17 +121,12 @@ class LocationActivity : AppCompatActivity(), LocationListener {
                 val latitude = currentLocation?.latitude
                 val longitude = currentLocation?.longitude
 
-                if (latitude != 0.0 && longitude != 0.0) {
-                    //val gridToSave = ("${location.latitude}, ${location.longitude}").toString()
-                    val gridToSave = "$latitude, $longitude"
-                    val savedLocation = SavedLocation(
-                        latitudeAndLongitude = gridToSave,
-                        description = description
-                    )
-                    locationViewModel.insert(savedLocation)
-                } else {
-                    Toast.makeText(this, "Coordinates are not available", Toast.LENGTH_LONG).show()
-                }
+                val gridToSave = "$latitude, $longitude"
+                val savedLocation = SavedLocation(
+                    latitudeAndLongitude = gridToSave,
+                    description = description
+                )
+                locationViewModel.insert(savedLocation)
             }
         } else {
             Toast.makeText(this,

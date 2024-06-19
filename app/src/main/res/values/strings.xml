@@ -39,9 +39,7 @@
     <string name="button_save">save</string>
     <string name="empty_not_saved">empty input, location not saved</string>
     <string name="add_new_location">add new location</string>
-
-
-
+    <string name="search">Search...</string>
 
 
 </resources>
