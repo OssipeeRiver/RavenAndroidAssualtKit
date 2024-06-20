@@ -2,12 +2,11 @@ package com.ossipeeriver.ravenandroidawarenesskit.ui.location
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
+import com.ossipeeriver.ravenandroidawarenesskit.location_db.SavedLocation
 import kotlinx.coroutines.launch
 
 class LocationViewModel(private val repository: LocationRepository) : ViewModel() {

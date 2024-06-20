@@ -18,7 +18,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ossipeeriver.ravenandroidawarenesskit.R
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
+import com.ossipeeriver.ravenandroidawarenesskit.location_db.SavedLocation
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityLocationBinding
 
 @Suppress("DEPRECATION")
@@ -121,7 +121,7 @@ class LocationActivity : AppCompatActivity(), LocationListener {
                 val latitude = currentLocation?.latitude
                 val longitude = currentLocation?.longitude
 
-                val gridToSave = "$latitude, $longitude"
+                val gridToSave = "$latitude , $longitude"
                 val savedLocation = SavedLocation(
                     latitudeAndLongitude = gridToSave,
                     description = description

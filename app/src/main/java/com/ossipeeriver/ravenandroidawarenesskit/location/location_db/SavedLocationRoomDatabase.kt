@@ -1,7 +1,6 @@
-package com.ossipeeriver.ravenandroidawarenesskit.database
+package com.ossipeeriver.ravenandroidawarenesskit.location_db
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -57,24 +56,18 @@ abstract class SavedLocationRoomDatabase: RoomDatabase() {
             // populate database with sample data
             val sampleLocationOne = SavedLocation(
                 "40.0220, -100.0100",
-                "Charlie Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio " +
-                        "vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Curabitur sollicitudin " +
-                        "tincidunt metus, at interdum lorem vehicula sit amet. Maecenas tempor dolor quis eros auctor," +
-                        " id pretium lacus aliquet. Sed quis orci sed lacus viverra commodo. Praesent dapibus sapien in " +
-                        "odio faucibus, nec viverra magna vestibulum. Donec quis nulla nec lectus efficitur dignissim." +
-                        " Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas." +
-                        " In bibendum dui in metus pretium, et fermentum justo efficitur. Phasellus id massa sit amet turpis pharetra consequat.."
+                "Take notes on areas of interest. They can be as long as needed, however, you'll likely want to keep them as concise as possible."
             )
             savedLocationDao.insertLocation(sampleLocationOne)
 
             val sampleLocationTwo = SavedLocation(
-                "40.0220, -100.0100",
-                "Alpha ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                "62.839993, -148.998786",
+                "No signs of recent activity. Covered and concealed. Away from natural lines of drift. Defendable for short period of time."
             )
             savedLocationDao.insertLocation(sampleLocationTwo)
 
             val sampleLocationThree = SavedLocation(
-                "40.0220, -100.0100",
+                "35.572296, 8.756501",
                 "Bravo ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             )
             savedLocationDao.insertLocation(sampleLocationThree)

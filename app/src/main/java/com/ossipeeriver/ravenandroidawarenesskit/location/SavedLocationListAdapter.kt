@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ossipeeriver.ravenandroidawarenesskit.R
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
+import com.ossipeeriver.ravenandroidawarenesskit.location_db.SavedLocation
 import com.ossipeeriver.ravenandroidawarenesskit.ui.location.SavedLocationListAdapter.SavedLocationViewHolder
 
 class SavedLocationListAdapter : ListAdapter<SavedLocation, SavedLocationViewHolder>(SAVED_LOCATION_COMPARATOR), Filterable {
