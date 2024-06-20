@@ -2,15 +2,15 @@ package com.ossipeeriver.ravenandroidawarenesskit.ui.forecast
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityForcastBinding
+import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityForecastBinding
 
 class ForecastActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityForcastBinding
+    private lateinit var binding: ActivityForecastBinding
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        binding = ActivityForcastBinding.inflate(layoutInflater)
+        binding = ActivityForecastBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 

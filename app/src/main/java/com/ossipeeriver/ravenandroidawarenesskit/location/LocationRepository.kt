@@ -2,8 +2,8 @@ package com.ossipeeriver.ravenandroidawarenesskit.ui.location
 
 import android.util.Log
 import androidx.annotation.WorkerThread
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationDao
+import com.ossipeeriver.ravenandroidawarenesskit.location_db.SavedLocation
+import com.ossipeeriver.ravenandroidawarenesskit.location_db.SavedLocationDao
 import kotlinx.coroutines.flow.Flow
 
 class LocationRepository(private val locationDao: SavedLocationDao) {

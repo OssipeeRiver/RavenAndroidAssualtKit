@@ -1,7 +1,5 @@
-package com.ossipeeriver.ravenandroidawarenesskit.database
+package com.ossipeeriver.ravenandroidawarenesskit.location_db
 
-import androidx.annotation.NonNull
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 @Entity(tableName = "saved_locations")

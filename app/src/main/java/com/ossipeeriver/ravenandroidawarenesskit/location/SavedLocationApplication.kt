@@ -1,7 +1,7 @@
 package com.ossipeeriver.ravenandroidawarenesskit.ui.location
 
 import android.app.Application
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocationRoomDatabase
+import com.ossipeeriver.ravenandroidawarenesskit.location_db.SavedLocationRoomDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 

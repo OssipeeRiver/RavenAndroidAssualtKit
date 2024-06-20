@@ -18,7 +18,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ossipeeriver.ravenandroidawarenesskit.R
-import com.ossipeeriver.ravenandroidawarenesskit.database.SavedLocation
+import com.ossipeeriver.ravenandroidawarenesskit.location_db.SavedLocation
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityLocationBinding
 
 @Suppress("DEPRECATION")
