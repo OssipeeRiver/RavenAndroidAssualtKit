@@ -60,73 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/locationDataWidgetHeader"
-                        android:text="@string/humidity"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        style="@style/locationDataWidgetContent"
-                        android:text="@string/null_data"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/card_width"
-                android:layout_height="@dimen/card_height"
-                android:layout_margin="@dimen/card_margin"
-                app:cardElevation="@dimen/card_elevation"
-                app:cardCornerRadius="@dimen/card_corner_radius">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/locationDataWidgetHeader"
                         android:text="@string/visibility"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        style="@style/locationDataWidgetContent"
-                        android:text="@string/null_data"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </HorizontalScrollView>
-
-    <!-- bottom scroll -->
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/card_width"
-                android:layout_height="@dimen/card_height"
-                android:layout_margin="@dimen/card_margin"
-                app:cardElevation="@dimen/card_elevation"
-                app:cardCornerRadius="@dimen/card_corner_radius">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/locationDataWidgetHeader"
-                        android:text="@string/uv_index"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -178,6 +112,58 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/locationDataWidgetHeader"
+                        android:text="@string/humidity"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        style="@style/locationDataWidgetContent"
+                        android:text="@string/null_data"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/card_width"
+                android:layout_height="@dimen/card_height"
+                android:layout_margin="@dimen/card_margin"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardCornerRadius="@dimen/card_corner_radius">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/locationDataWidgetHeader"
+                        android:text="@string/uv_index"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        style="@style/locationDataWidgetContent"
+                        android:text="@string/null_data"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/card_width"
+                android:layout_height="@dimen/card_height"
+                android:layout_margin="@dimen/card_margin"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardCornerRadius="@dimen/card_corner_radius">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/locationDataWidgetHeader"
                         android:text="@string/dew_point"/>
 
                     <TextView
@@ -190,5 +176,4 @@
 
         </LinearLayout>
     </HorizontalScrollView>
-    
 </LinearLayout>
