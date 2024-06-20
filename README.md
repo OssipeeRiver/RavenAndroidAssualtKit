@@ -9,3 +9,4 @@ enhance in-field communication and decision-making. This project explores concep
 - Jetpack Compose & XML
 - Remote APIs & local Room databases
 - Location tracking with the Esri ArcGIS Maps SDK
+- More to come...
