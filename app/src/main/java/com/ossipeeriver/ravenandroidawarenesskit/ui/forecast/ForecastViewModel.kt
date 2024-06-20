@@ -1,10 +1,10 @@
-package com.ossipeeriver.ravenandroidawarenesskit.ui.slideshow
+package com.ossipeeriver.ravenandroidawarenesskit.ui.forecast
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SlideshowViewModel : ViewModel() {
+class ForecastViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "Forecast Data"

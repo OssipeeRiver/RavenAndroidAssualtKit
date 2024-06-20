@@ -57,7 +57,7 @@ abstract class SavedLocationRoomDatabase: RoomDatabase() {
             // populate database with sample data
             val sampleLocationOne = SavedLocation(
                 "40.0220, -100.0100",
-                "Take notes on areas of interest. They can be as long as needed, however, you'll likely want to keep them as concise possible."
+                "Take notes on areas of interest. They can be as long as needed, however, you'll likely want to keep them as concise as possible."
             )
             savedLocationDao.insertLocation(sampleLocationOne)
 

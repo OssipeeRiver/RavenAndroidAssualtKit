@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.ossipeeriver.ravenandroidawarenesskit.databinding.ActivityMainBinding
+import com.ossipeeriver.ravenandroidawarenesskit.ui.forecast.ForecastActivity
 import com.ossipeeriver.ravenandroidawarenesskit.ui.location.LocationActivity
 import com.ossipeeriver.ravenandroidawarenesskit.ui.location.SavedLocationListAdapter
 
@@ -57,12 +58,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_home -> {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.nav_home)
             }
-            R.id.nav_slideshow -> {
-                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.nav_slideshow)
+            R.id.nav_forecast -> {
+                val intent = Intent(this, ForecastActivity::class.java)
+                startActivity(intent)
             }
             R.id.nav_location -> {
-                val intent = Intent(this, LocationActivity::class.java)
-                startActivity(intent)
+                val locationScreen = Intent(this, LocationActivity::class.java)
+                startActivity(locationScreen)
             }
         }
         return true
