@@ -42,8 +42,7 @@ abstract class SavedLocationRoomDatabase: RoomDatabase() {
              */
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
-                // If you want to keep the data through app restarts,
-                // comment out the following line.
+                // comment out the following line to keep the data through app restarts,
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
                         populateDatabase(database.savedLocationDao())

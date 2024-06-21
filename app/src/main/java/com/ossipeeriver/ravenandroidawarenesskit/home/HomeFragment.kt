@@ -30,17 +30,17 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
-
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setApiKey()
 
         mapView = binding.mapView
         locationDisplay = mapView.locationDisplay
 
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         lifecycle.addObserver(mapView)
+        setApiKey()
         setupMap()
     }
 

@@ -11,9 +11,4 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/nav_forecast"
-        android:name="com.ossipeeriver.ravenandroidawarenesskit.forecast.ForecastActivity"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/activity_forecast" />
 </navigation>
