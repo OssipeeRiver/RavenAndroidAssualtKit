@@ -10,5 +10,5 @@ enhance in-field communication and decision-making. This project explores concep
 - Remote APIs & local Room databases
 - Location tracking with the Esri ArcGIS Maps SDK
 - More to come...
-- 
+
 ![Raven Android Awareness Kit](https://github.com/OssipeeRiver/RavenAndroidAwarenessKit/assets/94566958/5f397203-d9b8-4e6b-bf5b-fc8dcd74bc30)
