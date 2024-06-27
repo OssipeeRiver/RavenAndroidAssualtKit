@@ -1,0 +1,15 @@
+# list projects versions
+[versions]
+
+
+# dependencies that get linked to versions
+[libraries]
+
+
+
+# gradle plugins
+[plugins]
+
+
+# inlcude multiple dependencies together
+[bundles]
